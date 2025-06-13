@@ -60,37 +60,37 @@ const AddStudentForm = ({ isOpen, onClose, onStudentAdded, classes, onClassesUpd
     }
   };
 
-  return (
-    &lt;Modal isOpen={isOpen} onClose={onClose} title="Add New Student" className="max-w-md"&gt;
-      &lt;form onSubmit={handleAddStudent} className="space-y-4"&gt;
-        &lt;FormField label="Student Name" required&gt;
-          &lt;Input
+return (
+    <Modal isOpen={isOpen} onClose={onClose} title="Add New Student" className="max-w-md">
+      <form onSubmit={handleAddStudent} className="space-y-4">
+        <FormField label="Student Name" required>
+          <Input
             type="text"
             value={newStudent.name}
             onChange={(e) => setNewStudent(prev => ({ ...prev, name: e.target.value }))}
             placeholder="Enter student name"
             required
-          /&gt;
-        &lt;/FormField&gt;
+          />
+        </FormField>
 
-        &lt;FormField label="Email Address" required&gt;
-          &lt;Input
+        <FormField label="Email Address" required>
+          <Input
             type="email"
             value={newStudent.email}
             onChange={(e) => setNewStudent(prev => ({ ...prev, email: e.target.value }))}
             placeholder="Enter email address"
             required
-          /&gt;
-        &lt;/FormField&gt;
+          />
+        </FormField>
 
-        &lt;div&gt;
-          &lt;label className="block text-sm font-medium text-gray-700 mb-2"&gt;
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             Assign to Classes
-          &lt;/label&gt;
-          &lt;div className="space-y-2 max-h-40 overflow-y-auto"&gt;
+          </label>
+          <div className="space-y-2 max-h-40 overflow-y-auto">
             {classes.map(classItem => (
-              &lt;label key={classItem.id} className="flex items-center space-x-2"&gt;
-                &lt;Checkbox
+              <label key={classItem.id} className="flex items-center space-x-2">
+                <Checkbox
                   checked={newStudent.selectedClassIds.includes(classItem.id)}
                   onChange={(e) => {
                     if (e.target.checked) {
@@ -105,34 +105,34 @@ const AddStudentForm = ({ isOpen, onClose, onStudentAdded, classes, onClassesUpd
                       }));
                     }
                   }}
-                /&gt;
-                &lt;Text type="span" className="text-sm text-gray-700"&gt;
+                />
+                <Text type="span" className="text-sm text-gray-700">
                   {classItem.name} - {classItem.subject}
-                &lt;/Text&gt;
-              &lt;/label&gt;
+                </Text>
+              </label>
             ))}
-          &lt;/div&gt;
-        &lt;/div&gt;
+          </div>
+        </div>
 
-        &lt;div className="flex items-center justify-end space-x-3 pt-4"&gt;
-          &lt;Button
+        <div className="flex items-center justify-end space-x-3 pt-4">
+          <Button
             type="button"
             variant="ghost"
             onClick={onClose}
-          &gt;
+          >
             Cancel
-          &lt;/Button&gt;
-          &lt;Button
+          </Button>
+          <Button
             type="submit"
             variant="primary"
             loading={adding}
             disabled={adding}
-          &gt;
+          >
             {adding ? 'Adding...' : 'Add Student'}
-          &lt;/Button&gt;
-        &lt;/div&gt;
-      &lt;/form&gt;
-    &lt;/Modal&gt;
+          </Button>
+        </div>
+      </form>
+    </Modal>
   );
 };
 
