@@ -10,7 +10,6 @@ export const routes = {
     label: 'Dashboard',
     path: '/',
     icon: 'Home',
-icon: 'Home',
     component: HomePage
   },
   classes: {
@@ -40,8 +39,6 @@ icon: 'Home',
     path: '/students',
     icon: 'GraduationCap',
     component: StudentsPage
-  }
-};
   }
 };
 
