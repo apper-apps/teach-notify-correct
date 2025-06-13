@@ -103,89 +103,89 @@ function StudentsPage() {
     );
   };
 
-  if (loading) {
+if (loading) {
     return (
-      &lt;div className="p-6"&gt;
-        &lt;div className="animate-pulse"&gt;
-          &lt;div className="h-8 bg-gray-200 rounded w-1/4 mb-6"&gt;&lt;/div&gt;
-          &lt;div className="h-10 bg-gray-200 rounded w-full mb-6"&gt;&lt;/div&gt;
-          &lt;div className="space-y-4"&gt;
+      <div className="p-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/4 mb-6"></div>
+          <div className="h-10 bg-gray-200 rounded w-full mb-6"></div>
+          <div className="space-y-4">
             {[...Array(5)].map((_, i) => (
-              &lt;div key={i} className="bg-white p-4 rounded-lg shadow-sm"&gt;
-                &lt;div className="h-6 bg-gray-200 rounded w-1/2 mb-2"&gt;&lt;/div&gt;
-                &lt;div className="h-4 bg-gray-200 rounded w-1/3"&gt;&lt;/div&gt;
-              &lt;/div&gt;
+              <div key={i} className="bg-white p-4 rounded-lg shadow-sm">
+                <div className="h-6 bg-gray-200 rounded w-1/2 mb-2"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+              </div>
             ))}
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+          </div>
+        </div>
+      </div>
     );
   }
 
   if (error) {
     return (
-      &lt;div className="p-6"&gt;
-        &lt;div className="text-center py-12"&gt;
-          &lt;ApperIcon name="AlertCircle" className="w-16 h-16 text-red-400 mx-auto mb-4" /&gt;
-          &lt;Heading level={3} className="text-lg font-medium"&gt;Failed to load students&lt;/Heading&gt;
-          &lt;Text type="p" className="text-gray-500 mb-4"&gt;{error}&lt;/Text&gt;
-          &lt;Button variant="primary" onClick={() => window.location.reload()}&gt;
+      <div className="p-6">
+        <div className="text-center py-12">
+          <ApperIcon name="AlertCircle" className="w-16 h-16 text-red-400 mx-auto mb-4" />
+          <Heading level={3} className="text-lg font-medium">Failed to load students</Heading>
+          <Text type="p" className="text-gray-500 mb-4">{error}</Text>
+          <Button variant="primary" onClick={() => window.location.reload()}>
             Try Again
-          &lt;/Button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+          </Button>
+        </div>
+      </div>
     );
   }
 
   return (
-    &lt;div className="p-6 max-w-full"&gt;
+    <div className="p-6 max-w-full">
       {/* Header */}
-      &lt;div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6"&gt;
-        &lt;div&gt;
-          &lt;Heading level={1} className="text-2xl font-bold"&gt;Students&lt;/Heading&gt;
-          &lt;Text type="p" className="text-gray-600"&gt;Manage your student roster&lt;/Text&gt;
-        &lt;/div&gt;
-        &lt;div className="flex items-center space-x-3"&gt;
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div>
+          <Heading level={1} className="text-2xl font-bold">Students</Heading>
+          <Text type="p" className="text-gray-600">Manage your student roster</Text>
+        </div>
+        <div className="flex items-center space-x-3">
           {selectedStudents.length > 0 && (
-            &lt;Button
+            <Button
               variant="danger"
               onClick={handleBulkDelete}
               icon="Trash2"
-            &gt;
+            >
               Delete ({selectedStudents.length})
-            &lt;/Button&gt;
+            </Button>
           )}
-          &lt;Button
+          <Button
             variant="primary"
             onClick={() => setShowAddModal(true)}
             icon="Plus"
-          &gt;
+          >
             Add Student
-          &lt;/Button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+          </Button>
+        </div>
+      </div>
 
       {/* Search and Filters */}
-      &lt;div className="flex flex-col sm:flex-row gap-4 mb-6"&gt;
-        &lt;div className="flex-1"&gt;
-          &lt;Input
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <div className="flex-1">
+          <Input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search students by name or email..."
             icon="Search"
-          /&gt;
-        &lt;/div&gt;
-        &lt;div className="flex items-center space-x-2 text-sm text-gray-600"&gt;
-          &lt;Text type="span"&gt;{filteredStudents.length} students&lt;/Text&gt;
+          />
+        </div>
+        <div className="flex items-center space-x-2 text-sm text-gray-600">
+          <Text type="span">{filteredStudents.length} students</Text>
           {selectedStudents.length > 0 && (
-            &lt;Text type="span" className="text-primary"&gt;• {selectedStudents.length} selected&lt;/Text&gt;
+            <Text type="span" className="text-primary">• {selectedStudents.length} selected</Text>
           )}
-        &lt;/div&gt;
-      &lt;/div&gt;
+        </div>
+      </div>
 
       {/* Students List/Table */}
-      &lt;StudentTable
+      <StudentTable
         filteredStudents={filteredStudents}
         classes={classes}
         selectedStudents={selectedStudents}
@@ -194,17 +194,17 @@ function StudentsPage() {
         onDeleteStudent={handleDeleteStudent}
         onAddStudentClick={() => setShowAddModal(true)}
         searchTerm={searchTerm}
-      /&gt;
+      />
 
       {/* Add Student Modal */}
-      &lt;AddStudentForm
+      <AddStudentForm
         isOpen={showAddModal}
         onClose={() => setShowAddModal(false)}
         onStudentAdded={handleStudentAdded}
         classes={classes}
         onClassesUpdated={handleClassesUpdated} // Pass a callback to update parent's classes state
-      /&gt;
-    &lt;/div&gt;
+      />
+    </div>
   );
 }
 
