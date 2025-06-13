@@ -1,13 +1,13 @@
 const FormField = ({ label, children, required = false, className = '', ...props }) => {
-  return (
-    &lt;div className={className} {...props}&gt;
+return (
+    <div className={className} {...props}>
       {label && (
-        &lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;
-          {label} {required && &lt;span className="text-red-500"&gt;*&lt;/span&gt;}
-        &lt;/label&gt;
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          {label} {required && <span className="text-red-500">*</span>}
+        </label>
       )}
       {children}
-    &lt;/div&gt;
+    </div>
   );
 };
 
