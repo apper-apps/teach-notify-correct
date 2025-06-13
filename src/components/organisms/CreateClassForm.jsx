@@ -35,39 +35,39 @@ const CreateClassForm = ({ isOpen, onClose, onClassCreated }) => {
     }
   };
 
-  return (
-    &lt;Modal isOpen={isOpen} onClose={onClose} title="Create New Class" className="max-w-md"&gt;
-      &lt;form onSubmit={handleCreateClass} className="space-y-4"&gt;
-        &lt;FormField label="Class Name" required&gt;
-          &lt;Input
+return (
+    <Modal isOpen={isOpen} onClose={onClose} title="Create New Class" className="max-w-md">
+      <form onSubmit={handleCreateClass} className="space-y-4">
+        <FormField label="Class Name" required>
+          <Input
             type="text"
             value={newClass.name}
             onChange={(e) => setNewClass(prev => ({ ...prev, name: e.target.value }))}
             placeholder="Enter class name"
             required
-          /&gt;
-        &lt;/FormField&gt;
+          />
+        </FormField>
 
-        &lt;FormField label="Subject" required&gt;
-          &lt;Input
+        <FormField label="Subject" required>
+          <Input
             type="text"
             value={newClass.subject}
             onChange={(e) => setNewClass(prev => ({ ...prev, subject: e.target.value }))}
             placeholder="Enter subject"
             required
-          /&gt;
-        &lt;/FormField&gt;
+          />
+        </FormField>
 
-        &lt;div className="flex items-center justify-end space-x-3 pt-4"&gt;
-          &lt;Button type="button" variant="ghost" onClick={onClose}&gt;
+        <div className="flex items-center justify-end space-x-3 pt-4">
+          <Button type="button" variant="ghost" onClick={onClose}>
             Cancel
-          &lt;/Button&gt;
-          &lt;Button type="submit" variant="primary" loading={creating} disabled={creating}&gt;
+          </Button>
+          <Button type="submit" variant="primary" loading={creating} disabled={creating}>
             {creating ? 'Creating...' : 'Create Class'}
-          &lt;/Button&gt;
-        &lt;/div&gt;
-      &lt;/form&gt;
-    &lt;/Modal&gt;
+          </Button>
+        </div>
+      </form>
+    </Modal>
   );
 };
 
