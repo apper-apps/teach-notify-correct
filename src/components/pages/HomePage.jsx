@@ -106,84 +106,86 @@ function HomePage() {
     }
   ];
 
-  if (loading) {
+if (loading) {
     return (
-      &lt;div className="p-6 space-y-6"&gt;
-        &lt;div className="animate-pulse"&gt;
-          &lt;div className="h-8 bg-gray-200 rounded w-1/4 mb-6"&gt;&lt;/div&gt;
-          &lt;div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"&gt;
+      <div className="p-6 space-y-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/4 mb-6"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {[...Array(4)].map((_, i) => (
-              &lt;div key={i} className="bg-white p-6 rounded-lg shadow-sm"&gt;
-                &lt;div className="h-4 bg-gray-200 rounded w-1/2 mb-4"&gt;&lt;/div&gt;
-                &lt;div className="h-8 bg-gray-200 rounded w-1/3"&gt;&lt;/div&gt;
-              &lt;/div&gt;
+              <div key={i} className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+                <div className="h-8 bg-gray-200 rounded w-1/3"></div>
+              </div>
             ))}
-          &lt;/div&gt;
-          &lt;div className="grid grid-cols-1 lg:grid-cols-2 gap-6"&gt;
-            &lt;div className="bg-white p-6 rounded-lg shadow-sm"&gt;
-              &lt;div className="h-6 bg-gray-200 rounded w-1/3 mb-4"&gt;&lt;/div&gt;
-              &lt;div className="space-y-4"&gt;
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>
+              <div className="space-y-4">
                 {[...Array(3)].map((_, i) => (
-                  &lt;div key={i} className="h-16 bg-gray-100 rounded"&gt;&lt;/div&gt;
+                  <div key={i} className="h-16 bg-gray-100 rounded"></div>
                 ))}
-              &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div className="bg-white p-6 rounded-lg shadow-sm"&gt;
-              &lt;div className="h-6 bg-gray-200 rounded w-1/3 mb-4"&gt;&lt;/div&gt;
-              &lt;div className="space-y-4"&gt;
+              </div>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>
+              <div className="space-y-4">
                 {[...Array(3)].map((_, i) => (
-                  &lt;div key={i} className="h-20 bg-gray-100 rounded"&gt;&lt;/div&gt;
+                  <div key={i} className="h-20 bg-gray-100 rounded"></div>
                 ))}
-              &lt;/div&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 
   if (error) {
     return (
-      &lt;div className="p-6"&gt;
-        &lt;div className="text-center py-12"&gt;
-          &lt;ApperIcon name="AlertCircle" className="w-16 h-16 text-red-400 mx-auto mb-4" /&gt;
-          &lt;Heading level={3} className="text-lg font-medium"&gt;Failed to load dashboard&lt;/Heading&gt;
-          &lt;Text type="p" className="text-gray-500 mb-4"&gt;{error}&lt;/Text&gt;
-          &lt;Button variant="primary" onClick={() => window.location.reload()}&gt;
+      <div className="p-6">
+        <div className="text-center py-12">
+          <ApperIcon name="AlertCircle" className="w-16 h-16 text-red-400 mx-auto mb-4" />
+          <Heading level={3} className="text-lg font-medium">Failed to load dashboard</Heading>
+          <Text type="p" className="text-gray-500 mb-4">{error}</Text>
+          <Button variant="primary" onClick={() => window.location.reload()}>
             Try Again
-          &lt;/Button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+          </Button>
+        </div>
+      </div>
     );
   }
 
   return (
-    &lt;div className="p-6 space-y-6 max-w-full"&gt;
+    <div className="p-6 space-y-6 max-w-full">
       {/* Header */}
-      &lt;div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"&gt;
-        &lt;div&gt;
-          &lt;Heading level={1} className="text-2xl font-bold"&gt;Dashboard&lt;/Heading&gt;
-          &lt;Text type="p" className="text-gray-600"&gt;Welcome back! Here's what's happening with your classes.&lt;/Text&gt;
-        &lt;/div&gt;
-        &lt;Button
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <Heading level={1} className="text-2xl font-bold">Dashboard</Heading>
+          <Text type="p" className="text-gray-600">Welcome back! Here's what's happening with your classes.</Text>
+        </div>
+        <Button
           variant="primary"
           onClick={() => navigate('/notifications')}
           icon="Plus"
-        &gt;
+        >
           Quick Notify
-        &lt;/Button&gt;
-      &lt;/div&gt;
+        </Button>
+      </div>
 
-      &lt;DashboardStatsSection stats={stats} /&gt;
+      <DashboardStatsSection stats={stats} />
 
-      &lt;div className="grid grid-cols-1 lg:grid-cols-2 gap-6"&gt;
-        &lt;DashboardQuickActions actions={quickActions} /&gt;
-        &lt;DashboardRecentActivity recentActivity={recentActivity} /&gt;
-      &lt;/div&gt;
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <DashboardQuickActions actions={quickActions} />
+        <DashboardRecentActivity recentActivity={recentActivity} />
+      </div>
 
-      &lt;QuickNotifySection /&gt;
-    &lt;/div&gt;
+      <QuickNotifySection />
+    </div>
   );
 }
+
+export default HomePage;
 
 export default HomePage;
