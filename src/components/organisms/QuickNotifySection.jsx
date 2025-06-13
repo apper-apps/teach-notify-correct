@@ -136,115 +136,115 @@ function QuickNotifySection() {
   };
 
   return (
-    &lt;Card animate delay={0.7}&gt;
-      &lt;div className="flex items-center justify-between mb-4"&gt;
-        &lt;Heading level={2} className="text-lg font-semibold"&gt;Quick Notify&lt;/Heading&gt;
-        &lt;Button variant="ghost" onClick={() => setIsExpanded(!isExpanded)} className="p-2 text-gray-400 hover:text-gray-600"&gt;
-          &lt;ApperIcon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} className="w-5 h-5" /&gt;
-        &lt;/Button&gt;
-      &lt;/div&gt;
+<Card animate delay={0.7}>
+      <div className="flex items-center justify-between mb-4">
+        <Heading level={2} className="text-lg font-semibold">Quick Notify</Heading>
+        <Button variant="ghost" onClick={() => setIsExpanded(!isExpanded)} className="p-2 text-gray-400 hover:text-gray-600">
+          <ApperIcon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} className="w-5 h-5" />
+        </Button>
+      </div>
 
       {!isExpanded ? (
-        &lt;div className="space-y-3"&gt;
-          &lt;Text type="p" className="text-sm text-gray-600 mb-4"&gt;Send quick notifications using templates&lt;/Text&gt;
-          &lt;div className="grid grid-cols-1 sm:grid-cols-3 gap-3"&gt;
+        <div className="space-y-3">
+          <Text type="p" className="text-sm text-gray-600 mb-4">Send quick notifications using templates</Text>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {quickTemplates.map((template) => (
-              &lt;motion.button
+              <motion.button
                 key={template.type}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleTemplateSelect(template)}
                 className="p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm transition-all duration-200 text-left"
-              &gt;
-                &lt;div className={`w-10 h-10 ${template.color} rounded-lg flex items-center justify-center`}&gt;
-                  &lt;ApperIcon name={template.icon} className="w-5 h-5 text-white" /&gt;
-                &lt;/div&gt;
-                &lt;div className="flex-1 min-w-0"&gt;
-                  &lt;Heading level={3} className="font-medium text-gray-900 capitalize text-base"&gt;{template.type}&lt;/Heading&gt;
-                  &lt;Text type="p" className="text-xs text-gray-500 truncate"&gt;{template.subject}&lt;/Text&gt;
-                &lt;/div&gt;
-              &lt;/motion.button&gt;
+              >
+                <div className={`w-10 h-10 ${template.color} rounded-lg flex items-center justify-center`}>
+                  <ApperIcon name={template.icon} className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <Heading level={3} className="font-medium text-gray-900 capitalize text-base">{template.type}</Heading>
+                  <Text type="p" className="text-xs text-gray-500 truncate">{template.subject}</Text>
+                </div>
+              </motion.button>
             ))}
-          &lt;/div&gt;
-        &lt;/div&gt;
+          </div>
+        </div>
       ) : (
-        &lt;motion.div
+        <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           className="space-y-4"
-        &gt;
+        >
           {/* Subject */}
-          &lt;div&gt;
-            &lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;Subject&lt;/label&gt;
-            &lt;Input
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+            <Input
               type="text"
               value={quickNotification.subject}
               onChange={(e) => setQuickNotification(prev => ({ ...prev, subject: e.target.value }))}
               placeholder="Enter notification subject"
               className="text-sm"
-            /&gt;
-          &lt;/div&gt;
+            />
+          </div>
 
           {/* Message */}
-          &lt;div&gt;
-            &lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;Message&lt;/label&gt;
-            &lt;TextArea
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <TextArea
               value={quickNotification.message}
               onChange={(e) => setQuickNotification(prev => ({ ...prev, message: e.target.value }))}
               placeholder="Enter your message"
               rows="3"
               className="text-sm"
-            /&gt;
-          &lt;/div&gt;
+            />
+          </div>
 
           {/* Class Selection */}
-          &lt;div&gt;
-            &lt;label className="block text-sm font-medium text-gray-700 mb-2"&gt;Select Classes&lt;/label&gt;
-            &lt;div className="space-y-2 max-h-32 overflow-y-auto"&gt;
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Select Classes</label>
+            <div className="space-y-2 max-h-32 overflow-y-auto">
               {classes.map(classItem => (
-                &lt;label key={classItem.id} className="flex items-center space-x-2 text-sm"&gt;
-                  &lt;Checkbox
+                <label key={classItem.id} className="flex items-center space-x-2 text-sm">
+                  <Checkbox
                     checked={quickNotification.selectedClassIds.includes(classItem.id)}
                     onChange={() => handleClassToggle(classItem.id)}
-                  /&gt;
-                  &lt;Text type="span" className="text-gray-700 truncate"&gt;
+                  />
+                  <Text type="span" className="text-gray-700 truncate">
                     {classItem.name} - {classItem.subject} ({classItem.studentIds.length} students)
-                  &lt;/Text&gt;
-                &lt;/label&gt;
+                  </Text>
+                </label>
               ))}
-            &lt;/div&gt;
-          &lt;/div&gt;
+            </div>
+          </div>
 
           {/* Selected Count */}
           {quickNotification.selectedClassIds.length > 0 && (
-            &lt;div className="bg-blue-50 p-3 rounded-lg"&gt;
-              &lt;Text type="p" className="text-sm text-blue-700"&gt;
-                &lt;ApperIcon name="Users" className="w-4 h-4 inline mr-1" /&gt;
+            <div className="bg-blue-50 p-3 rounded-lg">
+              <Text type="p" className="text-sm text-blue-700">
+                <ApperIcon name="Users" className="w-4 h-4 inline mr-1" />
                 {getSelectedStudentIds().length} students will receive this notification
-              &lt;/Text&gt;
-            &lt;/div&gt;
+              </Text>
+            </div>
           )}
 
           {/* Actions */}
-          &lt;div className="flex items-center justify-end space-x-3 pt-2"&gt;
-            &lt;Button variant="ghost" onClick={() => setIsExpanded(false)} className="text-sm"&gt;
+          <div className="flex items-center justify-end space-x-3 pt-2">
+            <Button variant="ghost" onClick={() => setIsExpanded(false)} className="text-sm">
               Cancel
-            &lt;/Button&gt;
-            &lt;Button
+            </Button>
+            <Button
               variant="primary"
               onClick={handleQuickSend}
               loading={sending}
               disabled={quickNotification.selectedClassIds.length === 0}
               icon="Send"
               className="text-sm"
-            &gt;
+            >
               {sending ? 'Sending...' : 'Send Now'}
-            &lt;/Button&gt;
-          &lt;/div&gt;
-        &lt;/motion.div&gt;
+            </Button>
+          </div>
+        </motion.div>
       )}
-    &lt;/Card&gt;
+    </Card>
   );
 }
 
