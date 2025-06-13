@@ -12,10 +12,10 @@ const Card = ({ children, className = '', animate = false, delay = 0, ...props }
     transition: { delay }
   } : {};
 
-  return (
-    &lt;MotionComponent className={finalClasses} {...animationProps} {...props}&gt;
+return (
+    <MotionComponent className={finalClasses} {...animationProps} {...props}>
       {children}
-    &lt;/MotionComponent&gt;
+    </MotionComponent>
   );
 };
 
