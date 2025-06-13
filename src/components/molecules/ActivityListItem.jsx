@@ -15,27 +15,27 @@ const ActivityListItem = ({ activity, delay = 0 }) => {
     default: 'bg-gray-100 text-gray-600'
   };
 
-  return (
-    &lt;motion.div
+return (
+    <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay }}
       className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
-    &gt;
-      &lt;div className={`w-8 h-8 rounded-full flex items-center justify-center ${bgColor}`} &gt;
-        &lt;ApperIcon name={iconName} className={`w-4 h-4 ${iconColor}`} /&gt;
-      &lt;/div&gt;
-      &lt;div className="flex-1 min-w-0"&gt;
-        &lt;Text type="p" className="text-sm font-medium text-gray-900 truncate"&gt;{activity.title}&lt;/Text&gt;
-        &lt;Text type="p" className="text-xs text-gray-500 truncate"&gt;{activity.description}&lt;/Text&gt;
-        &lt;Text type="p" className="text-xs text-gray-400 mt-1"&gt;
+    >
+      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${bgColor}`}>
+        <ApperIcon name={iconName} className={`w-4 h-4 ${iconColor}`} />
+      </div>
+      <div className="flex-1 min-w-0">
+        <Text type="p" className="text-sm font-medium text-gray-900 truncate">{activity.title}</Text>
+        <Text type="p" className="text-xs text-gray-500 truncate">{activity.description}</Text>
+        <Text type="p" className="text-xs text-gray-400 mt-1">
           {new Date(activity.time).toLocaleDateString()}
-        &lt;/Text&gt;
-      &lt;/div&gt;
-      &lt;div className={`px-2 py-1 rounded-full text-xs font-medium ${statusClasses[activity.status] || statusClasses.default}`} &gt;
+        </Text>
+      </div>
+      <div className={`px-2 py-1 rounded-full text-xs font-medium ${statusClasses[activity.status] || statusClasses.default}`}>
         {activity.status}
-      &lt;/div&gt;
-    &lt;/motion.div&gt;
+      </div>
+    </motion.div>
   );
 };
 
