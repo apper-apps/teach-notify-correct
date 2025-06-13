@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import {
-  routes
-} from '@/config/routes';
+import { motion, AnimatePresence } from 'framer-motion';
+import { routes } from '@/config/routes';
 import ApperIcon from '@/components/ApperIcon';
 import Heading from '@/components/atoms/Heading';
+
+function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  
+  // Convert routes object to array for mapping
+  const routeArray = Object.values(routes).filter(route => route.showInNav !== false);
 
   return (
     <div className="h-screen flex overflow-hidden">
@@ -21,7 +25,7 @@ import Heading from '@/components/atoms/Heading';
           />
         )}
       </AnimatePresence>
-&lt;Heading level={4} className="text-lg text-gray-800"&gt;Apper&lt;/Heading&gt;
+
       {/* Sidebar */}
       <motion.aside
         initial={false}
@@ -35,11 +39,13 @@ import Heading from '@/components/atoms/Heading';
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <ApperIcon name="Bell" className="w-5 h-5 text-white" />
-&lt;ApperIcon name={route.icon} className="w-5 h-5" /&gt;
-                &lt;span className="text-sm font-medium"&gt;{route.label}&lt;/span&gt;
-              &lt;/NavLink&gt;
-            ))}
-          &lt;/nav&gt;
+              </div>
+              <Heading level={4} className="text-lg text-gray-800">Apper</Heading>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <nav className="flex-1 px-4 py-6 space-y-2">
             {routeArray.map((route) => (
               <NavLink
                 key={route.id}
@@ -54,7 +60,7 @@ import Heading from '@/components/atoms/Heading';
                 }
               >
                 <ApperIcon name={route.icon} className="w-5 h-5" />
-                <span>{route.label}</span>
+                <span className="text-sm font-medium">{route.label}</span>
               </NavLink>
             ))}
           </nav>
