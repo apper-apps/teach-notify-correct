@@ -187,5 +187,3 @@ if (loading) {
 }
 
 export default HomePage;
-
-export default HomePage;
