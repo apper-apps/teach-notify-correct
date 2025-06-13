@@ -171,9 +171,8 @@ if (loading) {
         onClose={() => setShowCreateModal(false)}
         onAssignmentCreated={handleAssignmentCreated}
         classes={classes}
-      />
+/>
     </div>
-  );
   );
 }
 
