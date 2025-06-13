@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "classId": "1",
+    "title": "Calculus Problem Set #5",
+    "description": "Complete exercises 1-20 from Chapter 7. Show all work and provide detailed explanations for word problems.",
+    "dueDate": "2024-12-20T23:59:00Z",
+    "attachments": [],
+    "createdAt": "2024-12-10T10:00:00Z"
+  },
+  {
+    "id": "2",
+    "classId": "2",
+    "title": "Physics Lab Report - Momentum",
+    "description": "Write a comprehensive lab report on the momentum conservation experiment conducted in class. Include data analysis and conclusion.",
+    "dueDate": "12/18/2024 5:00:00 PMZ",
+    "attachments": [],
+    "createdAt": "2024-12-08T14:30:00Z"
+  },
+  {
+    "id": "3",
+    "classId": "3",
+    "title": "Shakespeare Essay - Hamlet Analysis",
+    "description": "Write a 1500-word essay analyzing the theme of revenge in Hamlet. Use specific examples from the text to support your arguments.",
+    "dueDate": "2024-12-22T12:00:00Z",
+    "attachments": [],
+    "createdAt": "2024-12-05T09:15:00Z"
+  },
+  {
+    "id": "4",
+    "classId": "4",
+    "title": "World War II Research Project",
+    "description": "Create a presentation on a specific battle or event from World War II. Include primary sources and historical context.",
+    "dueDate": "2024-12-25T10:00:00Z",
+    "attachments": [],
+    "createdAt": "2024-12-12T11:45:00Z"
+  },
+  {
+    "id": "5",
+    "classId": "5",
+    "title": "Chemical Reactions Lab",
+    "description": "Complete the chemical reactions lab worksheet and submit your observations and conclusions.",
+    "dueDate": "2024-12-15T16:00:00Z",
+    "attachments": [],
+    "createdAt": "2024-12-03T13:20:00Z"
+  }
+]

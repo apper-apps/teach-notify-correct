@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "type": "assignment",
+    "recipientIds": ["1", "2", "3", "5"],
+    "subject": "New Assignment Posted - Calculus Problem Set #5",
+    "message": "A new assignment has been posted for Advanced Mathematics. Please check the details and due date. The assignment is due December 20th at 11:59 PM.",
+    "assignmentId": "1",
+    "sentAt": "2024-12-10T10:15:00Z",
+    "status": "sent"
+  },
+  {
+    "id": "2",
+    "type": "announcement",
+    "recipientIds": ["2", "4", "6", "7"],
+    "subject": "Physics Class Update - Lab Schedule Change",
+    "message": "Important update: The physics lab scheduled for this Friday has been moved to next Monday at the same time. Please adjust your schedules accordingly.",
+    "assignmentId": null,
+    "sentAt": "2024-12-09T16:20:00Z",
+    "status": "sent"
+  },
+  {
+    "id": "3",
+    "type": "reminder",
+    "recipientIds": ["1", "3", "5", "6", "8"],
+    "subject": "Reminder: Shakespeare Essay Due Tomorrow",
+    "message": "This is a friendly reminder that your Shakespeare essay analyzing Hamlet is due tomorrow at 12:00 PM. Please ensure you submit it on time through the class portal.",
+    "assignmentId": "3",
+    "sentAt": "2024-12-21T08:00:00Z",
+    "status": "sent"
+  },
+  {
+    "id": "4",
+    "type": "announcement",
+    "recipientIds": ["4", "7", "8"],
+    "subject": "History Class - Guest Speaker Next Week",
+    "message": "We're excited to announce that Dr. Sarah Mitchell, a World War II historian, will be joining our class next Wednesday to discuss primary source research methods.",
+    "assignmentId": null,
+    "sentAt": "2024-12-11T14:45:00Z",
+    "status": "sent"
+  },
+  {
+    "id": "5",
+    "type": "assignment",
+    "recipientIds": ["2", "3", "6"],
+    "subject": "New Lab Assignment - Chemical Reactions",
+    "message": "A new lab assignment has been posted for Chemistry Honors. The lab focuses on chemical reactions and is due December 15th at 4:00 PM. Please bring your safety equipment.",
+    "assignmentId": "5",
+    "sentAt": "2024-12-03T13:30:00Z",
+    "status": "sent"
+  }
+]
