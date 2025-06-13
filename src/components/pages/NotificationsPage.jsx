@@ -55,74 +55,74 @@ function NotificationsPage() {
     return assignment ? assignment.title : 'Unknown Assignment';
   };
 
-  if (loading) {
+if (loading) {
     return (
-      &lt;div className="p-6"&gt;
-        &lt;div className="animate-pulse"&gt;
-          &lt;div className="h-8 bg-gray-200 rounded w-1/4 mb-6"&gt;&lt;/div&gt;
-          &lt;div className="space-y-4"&gt;
+      <div className="p-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/4 mb-6"></div>
+          <div className="space-y-4">
             {[...Array(5)].map((_, i) => (
-              &lt;div key={i} className="bg-white p-6 rounded-lg shadow-sm"&gt;
-                &lt;div className="h-6 bg-gray-200 rounded w-1/2 mb-4"&gt;&lt;/div&gt;
-                &lt;div className="h-4 bg-gray-200 rounded w-3/4 mb-2"&gt;&lt;/div&gt;
-                &lt;div className="h-4 bg-gray-200 rounded w-1/3"&gt;&lt;/div&gt;
-              &lt;/div&gt;
+              <div key={i} className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="h-6 bg-gray-200 rounded w-1/2 mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+              </div>
             ))}
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+          </div>
+        </div>
+      </div>
     );
   }
 
   if (error) {
     return (
-      &lt;div className="p-6"&gt;
-        &lt;div className="text-center py-12"&gt;
-          &lt;ApperIcon name="AlertCircle" className="w-16 h-16 text-red-400 mx-auto mb-4" /&gt;
-          &lt;Heading level={3} className="text-lg font-medium"&gt;Failed to load notifications&lt;/Heading&gt;
-          &lt;Text type="p" className="text-gray-500 mb-4"&gt;{error}&lt;/Text&gt;
-          &lt;Button variant="primary" onClick={() => window.location.reload()}&gt;
+      <div className="p-6">
+        <div className="text-center py-12">
+          <ApperIcon name="AlertCircle" className="w-16 h-16 text-red-400 mx-auto mb-4" />
+          <Heading level={3} className="text-lg font-medium">Failed to load notifications</Heading>
+          <Text type="p" className="text-gray-500 mb-4">{error}</Text>
+          <Button variant="primary" onClick={() => window.location.reload()}>
             Try Again
-          &lt;/Button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+          </Button>
+        </div>
+      </div>
     );
   }
 
   return (
-    &lt;div className="p-6 max-w-full"&gt;
+    <div className="p-6 max-w-full">
       {/* Header */}
-      &lt;div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6"&gt;
-        &lt;div&gt;
-          &lt;Heading level={1} className="text-2xl font-bold"&gt;Notifications&lt;/Heading&gt;
-          &lt;Text type="p" className="text-gray-600"&gt;Send notifications to students and view history&lt;/Text&gt;
-        &lt;/div&gt;
-        &lt;Button
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div>
+          <Heading level={1} className="text-2xl font-bold">Notifications</Heading>
+          <Text type="p" className="text-gray-600">Send notifications to students and view history</Text>
+        </div>
+        <Button
           variant="primary"
           onClick={() => setShowComposer(true)}
           icon="Send"
-        &gt;
+        >
           Compose
-        &lt;/Button&gt;
-      &lt;/div&gt;
+        </Button>
+      </div>
 
       {/* Notification History */}
-      &lt;NotificationHistory 
+      <NotificationHistory 
         notifications={notifications} 
         getAssignmentTitle={getAssignmentTitle} 
         onComposeNotificationClick={() => setShowComposer(true)}
-      /&gt;
+      />
 
       {/* Notification Composer Modal */}
-      &lt;NotificationComposer
+      <NotificationComposer
         isOpen={showComposer}
         onClose={() => setShowComposer(false)}
         onNotificationSent={handleNotificationSent}
         classes={classes}
         students={students}
         assignments={assignments}
-      /&gt;
-    &lt;/div&gt;
+      />
+    </div>
   );
 }
 
