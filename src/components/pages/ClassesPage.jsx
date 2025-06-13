@@ -59,73 +59,75 @@ function ClassesPage() {
     return classData ? classData.studentIds.length : 0;
   };
 
-  if (loading) {
+if (loading) {
     return (
-      &lt;div className="p-6"&gt;
-        &lt;div className="animate-pulse"&gt;
-          &lt;div className="h-8 bg-gray-200 rounded w-1/4 mb-6"&gt;&lt;/div&gt;
-          &lt;div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;
+      <div className="p-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/4 mb-6"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
-              &lt;div key={i} className="bg-white p-6 rounded-lg shadow-sm"&gt;
-                &lt;div className="h-6 bg-gray-200 rounded w-3/4 mb-4"&gt;&lt;/div&gt;
-                &lt;div className="h-4 bg-gray-200 rounded w-1/2 mb-2"&gt;&lt;/div&gt;
-                &lt;div className="h-4 bg-gray-200 rounded w-1/3"&gt;&lt;/div&gt;
-              &lt;/div&gt;
+              <div key={i} className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+              </div>
             ))}
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+          </div>
+        </div>
+      </div>
     );
   }
 
   if (error) {
     return (
-      &lt;div className="p-6"&gt;
-        &lt;div className="text-center py-12"&gt;
-          &lt;ApperIcon name="AlertCircle" className="w-16 h-16 text-red-400 mx-auto mb-4" /&gt;
-          &lt;Heading level={3} className="text-lg font-medium"&gt;Failed to load classes&lt;/Heading&gt;
-          &lt;Text type="p" className="text-gray-500 mb-4"&gt;{error}&lt;/Text&gt;
-          &lt;Button variant="primary" onClick={() => window.location.reload()}&gt;
+      <div className="p-6">
+        <div className="text-center py-12">
+          <ApperIcon name="AlertCircle" className="w-16 h-16 text-red-400 mx-auto mb-4" />
+          <Heading level={3} className="text-lg font-medium">Failed to load classes</Heading>
+          <Text type="p" className="text-gray-500 mb-4">{error}</Text>
+          <Button variant="primary" onClick={() => window.location.reload()}>
             Try Again
-          &lt;/Button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+          </Button>
+        </div>
+      </div>
     );
   }
 
   return (
-    &lt;div className="p-6 max-w-full"&gt;
+    <div className="p-6 max-w-full">
       {/* Header */}
-      &lt;div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6"&gt;
-        &lt;div&gt;
-          &lt;Heading level={1} className="text-2xl font-bold"&gt;Classes&lt;/Heading&gt;
-          &lt;Text type="p" className="text-gray-600"&gt;Manage your classes and students&lt;/Text&gt;
-        &lt;/div&gt;
-        &lt;Button
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div>
+          <Heading level={1} className="text-2xl font-bold">Classes</Heading>
+          <Text type="p" className="text-gray-600">Manage your classes and students</Text>
+        </div>
+        <Button
           variant="primary"
           onClick={() => setShowCreateModal(true)}
           icon="Plus"
-        &gt;
+        >
           Add Class
-        &lt;/Button&gt;
-      &lt;/div&gt;
+        </Button>
+      </div>
 
       {/* Classes Grid */}
-      &lt;ClassList 
+      <ClassList 
         classes={classes} 
         getStudentCount={getStudentCount} 
         onDeleteClass={handleDeleteClass} 
         onAddClassClick={() => setShowCreateModal(true)}
-      /&gt;
+      />
 
       {/* Create Class Modal */}
-      &lt;CreateClassForm
+      <CreateClassForm
         isOpen={showCreateModal}
         onClose={() => setShowCreateModal(false)}
         onClassCreated={handleClassCreated}
-      /&gt;
-    &lt;/div&gt;
+      />
+    </div>
   );
 }
+
+export default ClassesPage;
 
 export default ClassesPage;
