@@ -131,20 +131,20 @@ const NotificationComposer = ({ isOpen, onClose, onNotificationSent, classes, st
   };
 
   return (
-    &lt;Modal isOpen={isOpen} onClose={onClose} title="Compose Notification" className="max-w-2xl"&gt;
-      &lt;form onSubmit={handleSendNotification} className="space-y-6"&gt;
+<Modal isOpen={isOpen} onClose={onClose} title="Compose Notification" className="max-w-2xl">
+      <form onSubmit={handleSendNotification} className="space-y-6">
         {/* Template Selection */}
-        &lt;div&gt;
-          &lt;label className="block text-sm font-medium text-gray-700 mb-2"&gt;
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             Notification Type
-          &lt;/label&gt;
-          &lt;div className="grid grid-cols-3 gap-3"&gt;
+          </label>
+          <div className="grid grid-cols-3 gap-3">
             {Object.entries(notificationTemplates).map(([type, template]) => (
-              &lt;Button
+              <Button
                 key={type}
                 type="button"
                 onClick={() => handleTemplateSelect(type)}
-                className={`p-3 border text-center transition-all ${
+                className={`flex flex-col items-center justify-center !p-3 !text-center border transition-all ${
                   newNotification.type === type
                     ? 'border-primary bg-primary/10 text-primary'
                     : 'border-gray-200 hover:border-gray-300'
@@ -153,91 +153,90 @@ const NotificationComposer = ({ isOpen, onClose, onNotificationSent, classes, st
                 // Manually apply internal styling because Button atom does not expose all style props easily
                 // This is a trade-off for atomic design (atoms are too generic for specific style needs)
                 style={{ backgroundColor: newNotification.type === type ? 'var(--color-primary-10)' : '', borderColor: newNotification.type === type ? 'var(--color-primary)' : '' }}
-                className="flex flex-col items-center justify-center !p-3 !text-center" // Override button padding/flex
-              &gt;
-                &lt;ApperIcon 
+              >
+                <ApperIcon 
                   name={type === 'assignment' ? 'FileText' : type === 'reminder' ? 'Clock' : 'Bell'} 
                   className="w-5 h-5 mx-auto mb-1" 
-                /&gt;
-                &lt;Text type="div" className="text-sm font-medium capitalize"&gt;{type}&lt;/Text&gt;
-              &lt;/Button&gt;
+                />
+                <Text type="div" className="text-sm font-medium capitalize">{type}</Text>
+              </Button>
             ))}
-          &lt;/div&gt;
-        &lt;/div&gt;
+          </div>
+        </div>
 
         {/* Subject */}
-        &lt;FormField label="Subject" required&gt;
-          &lt;Input
+        <FormField label="Subject" required>
+          <Input
             type="text"
             value={newNotification.subject}
             onChange={(e) => setNewNotification(prev => ({ ...prev, subject: e.target.value }))}
             placeholder="Enter notification subject"
             required
-          /&gt;
-        &lt;/FormField&gt;
+          />
+        </FormField>
 
         {/* Message */}
-        &lt;FormField label="Message" required&gt;
-          &lt;TextArea
+        <FormField label="Message" required>
+          <TextArea
             value={newNotification.message}
             onChange={(e) => setNewNotification(prev => ({ ...prev, message: e.target.value }))}
             placeholder="Enter your message"
             rows="4"
             required
-          /&gt;
-        &lt;/FormField&gt;
+          />
+        </FormField>
 
         {/* Class Selection */}
-        &lt;div&gt;
-          &lt;label className="block text-sm font-medium text-gray-700 mb-2"&gt;
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             Select Classes
-          &lt;/label&gt;
-          &lt;div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-40 overflow-y-auto"&gt;
+          </label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-40 overflow-y-auto">
             {classes.map(classItem => (
-              &lt;label key={classItem.id} className="flex items-center space-x-2 p-2 rounded hover:bg-gray-50"&gt;
-                &lt;Checkbox
+              <label key={classItem.id} className="flex items-center space-x-2 p-2 rounded hover:bg-gray-50">
+                <Checkbox
                   checked={newNotification.selectedClassIds.includes(classItem.id)}
                   onChange={() => handleClassSelect(classItem.id)}
-                /&gt;
-                &lt;Text type="span" className="text-sm text-gray-700 truncate"&gt;
+                />
+                <Text type="span" className="text-sm text-gray-700 truncate">
                   {classItem.name} - {classItem.subject} ({classItem.studentIds.length} students)
-                &lt;/Text&gt;
-              &lt;/label&gt;
+                </Text>
+              </label>
             ))}
-          &lt;/div&gt;
-        &lt;/div&gt;
+          </div>
+        </div>
 
         {/* Selected Recipients Count */}
         {newNotification.selectedStudentIds.length > 0 && (
-          &lt;div className="bg-blue-50 p-3 rounded-lg"&gt;
-            &lt;Text type="p" className="text-sm text-blue-700"&gt;
-              &lt;ApperIcon name="Users" className="w-4 h-4 inline mr-1" /&gt;
+          <div className="bg-blue-50 p-3 rounded-lg">
+            <Text type="p" className="text-sm text-blue-700">
+              <ApperIcon name="Users" className="w-4 h-4 inline mr-1" />
               {newNotification.selectedStudentIds.length} students selected
-            &lt;/Text&gt;
-          &lt;/div&gt;
+            </Text>
+          </div>
         )}
 
         {/* Action Buttons */}
-        &lt;div className="flex items-center justify-end space-x-3 pt-4 border-t border-gray-200"&gt;
-          &lt;Button
+        <div className="flex items-center justify-end space-x-3 pt-4 border-t border-gray-200">
+          <Button
             type="button"
             variant="ghost"
             onClick={onClose}
-          &gt;
+          >
             Cancel
-          &lt;/Button&gt;
-          &lt;Button
+          </Button>
+          <Button
             type="submit"
             variant="primary"
             loading={sending}
             disabled={sending || newNotification.selectedStudentIds.length === 0}
             icon="Send"
-          &gt;
+          >
             {sending ? 'Sending...' : 'Send Notification'}
-          &lt;/Button&gt;
-        &lt;/div&gt;
-      &lt;/form&gt;
-    &lt;/Modal&gt;
+          </Button>
+        </div>
+      </form>
+    </Modal>
   );
 };
 
