@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import ApperIcon from './components/ApperIcon';
-import { routeArray } from './config/routes';
-
-function Layout() {
+import {
+  routes
+} from '@/config/routes';
+import ApperIcon from '@/components/ApperIcon';
+import Heading from '@/components/atoms/Heading';
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -21,7 +21,7 @@ function Layout() {
           />
         )}
       </AnimatePresence>
-
+&lt;Heading level={4} className="text-lg text-gray-800"&gt;Apper&lt;/Heading&gt;
       {/* Sidebar */}
       <motion.aside
         initial={false}
@@ -35,13 +35,11 @@ function Layout() {
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <ApperIcon name="Bell" className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-heading font-bold text-gray-900">TeachNotify</span>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+&lt;ApperIcon name={route.icon} className="w-5 h-5" /&gt;
+                &lt;span className="text-sm font-medium"&gt;{route.label}&lt;/span&gt;
+              &lt;/NavLink&gt;
+            ))}
+          &lt;/nav&gt;
             {routeArray.map((route) => (
               <NavLink
                 key={route.id}

@@ -1,8 +1,8 @@
-import Home from '../pages/Home';
-import Classes from '../pages/Classes';
-import Assignments from '../pages/Assignments';
-import Notifications from '../pages/Notifications';
-import Students from '../pages/Students';
+import HomePage from '@/components/pages/HomePage';
+import ClassesPage from '@/components/pages/ClassesPage';
+import AssignmentsPage from '@/components/pages/AssignmentsPage';
+import NotificationsPage from '@/components/pages/NotificationsPage';
+import StudentsPage from '@/components/pages/StudentsPage';
 
 export const routes = {
   dashboard: {
@@ -10,35 +10,38 @@ export const routes = {
     label: 'Dashboard',
     path: '/',
     icon: 'Home',
-    component: Home
+icon: 'Home',
+    component: HomePage
   },
   classes: {
     id: 'classes',
     label: 'Classes',
     path: '/classes',
     icon: 'Users',
-    component: Classes
+    component: ClassesPage
   },
   assignments: {
     id: 'assignments',
     label: 'Assignments',
     path: '/assignments',
     icon: 'FileText',
-    component: Assignments
+    component: AssignmentsPage
   },
   notifications: {
     id: 'notifications',
     label: 'Notifications',
     path: '/notifications',
     icon: 'Bell',
-    component: Notifications
+    component: NotificationsPage
   },
   students: {
     id: 'students',
     label: 'Students',
     path: '/students',
     icon: 'GraduationCap',
-    component: Students
+    component: StudentsPage
+  }
+};
   }
 };
 
