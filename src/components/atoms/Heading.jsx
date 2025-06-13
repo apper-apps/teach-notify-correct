@@ -12,10 +12,10 @@ const Heading = ({ children, className = '', level = 1, ...props }) => {
 
   const finalClasses = `${baseClasses} ${sizeClasses[level]} ${className}`;
 
-  return (
-    &lt;Tag className={finalClasses} {...props}&gt;
+return (
+    <Tag className={finalClasses} {...props}>
       {children}
-    &lt;/Tag&gt;
+    </Tag>
   );
 };
 
