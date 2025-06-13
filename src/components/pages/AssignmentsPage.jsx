@@ -79,100 +79,101 @@ function AssignmentsPage() {
 
   const filteredAssignments = getFilteredAssignments();
 
-  if (loading) {
+if (loading) {
     return (
-      &lt;div className="p-6"&gt;
-        &lt;div className="animate-pulse"&gt;
-          &lt;div className="h-8 bg-gray-200 rounded w-1/4 mb-6"&gt;&lt;/div&gt;
-          &lt;div className="space-y-4"&gt;
+      <div className="p-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/4 mb-6"></div>
+          <div className="space-y-4">
             {[...Array(5)].map((_, i) => (
-              &lt;div key={i} className="bg-white p-6 rounded-lg shadow-sm"&gt;
-                &lt;div className="h-6 bg-gray-200 rounded w-1/2 mb-4"&gt;&lt;/div&gt;
-                &lt;div className="h-4 bg-gray-200 rounded w-3/4 mb-2"&gt;&lt;/div&gt;
-                &lt;div className="h-4 bg-gray-200 rounded w-1/3"&gt;&lt;/div&gt;
-              &lt;/div&gt;
+              <div key={i} className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="h-6 bg-gray-200 rounded w-1/2 mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+              </div>
             ))}
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+          </div>
+        </div>
+      </div>
     );
   }
 
   if (error) {
     return (
-      &lt;div className="p-6"&gt;
-        &lt;div className="text-center py-12"&gt;
-          &lt;ApperIcon name="AlertCircle" className="w-16 h-16 text-red-400 mx-auto mb-4" /&gt;
-          &lt;Heading level={3} className="text-lg font-medium"&gt;Failed to load assignments&lt;/Heading&gt;
-          &lt;Text type="p" className="text-gray-500 mb-4"&gt;{error}&lt;/Text&gt;
-          &lt;Button variant="primary" onClick={() => window.location.reload()}&gt;
+      <div className="p-6">
+        <div className="text-center py-12">
+          <ApperIcon name="AlertCircle" className="w-16 h-16 text-red-400 mx-auto mb-4" />
+          <Heading level={3} className="text-lg font-medium">Failed to load assignments</Heading>
+          <Text type="p" className="text-gray-500 mb-4">{error}</Text>
+          <Button variant="primary" onClick={() => window.location.reload()}>
             Try Again
-          &lt;/Button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+          </Button>
+        </div>
+      </div>
     );
   }
 
   return (
-    &lt;div className="p-6 max-w-full"&gt;
+    <div className="p-6 max-w-full">
       {/* Header */}
-      &lt;div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6"&gt;
-        &lt;div&gt;
-          &lt;Heading level={1} className="text-2xl font-bold"&gt;Assignments&lt;/Heading&gt;
-          &lt;Text type="p" className="text-gray-600"&gt;Create and manage assignments for your classes&lt;/Text&gt;
-        &lt;/div&gt;
-        &lt;Button
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div>
+          <Heading level={1} className="text-2xl font-bold">Assignments</Heading>
+          <Text type="p" className="text-gray-600">Create and manage assignments for your classes</Text>
+        </div>
+        <Button
           variant="primary"
           onClick={() => setShowCreateModal(true)}
           icon="Plus"
-        &gt;
+        >
           New Assignment
-        &lt;/Button&gt;
-      &lt;/div&gt;
+        </Button>
+      </div>
 
       {/* Filters */}
-      &lt;div className="flex items-center space-x-2 mb-6"&gt;
-        &lt;Button
+      <div className="flex items-center space-x-2 mb-6">
+        <Button
           variant={filter === 'all' ? 'primary' : 'ghost'}
           onClick={() => setFilter('all')}
           className="px-3 py-1 rounded-full text-sm font-medium"
-        &gt;
+        >
           All ({assignments.length})
-        &lt;/Button&gt;
-        &lt;Button
+        </Button>
+        <Button
           variant={filter === 'upcoming' ? 'primary' : 'ghost'}
           onClick={() => setFilter('upcoming')}
           className="px-3 py-1 rounded-full text-sm font-medium"
-        &gt;
+        >
           Upcoming ({assignments.filter(a => new Date(a.dueDate) > new Date()).length})
-        &lt;/Button&gt;
-        &lt;Button
+        </Button>
+        <Button
           variant={filter === 'overdue' ? 'primary' : 'ghost'}
           onClick={() => setFilter('overdue')}
           className="px-3 py-1 rounded-full text-sm font-medium"
-        &gt;
+        >
           Overdue ({assignments.filter(a => new Date(a.dueDate) < new Date()).length})
-        &lt;/Button&gt;
-      &lt;/div&gt;
+        </Button>
+      </div>
 
       {/* Assignments List */}
-      &lt;AssignmentList
+      <AssignmentList
         assignments={filteredAssignments}
         filter={filter}
         getClassName={getClassName}
         onDeleteAssignment={handleDeleteAssignment}
         onNotifyStudents={handleNotifyStudents}
         onCreateAssignmentClick={() => setShowCreateModal(true)}
-      /&gt;
+      />
 
       {/* Create Assignment Modal */}
-      &lt;CreateAssignmentForm
+      <CreateAssignmentForm
         isOpen={showCreateModal}
         onClose={() => setShowCreateModal(false)}
         onAssignmentCreated={handleAssignmentCreated}
         classes={classes}
-      /&gt;
-    &lt;/div&gt;
+      />
+    </div>
+  );
   );
 }
 
