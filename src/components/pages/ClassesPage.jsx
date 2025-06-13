@@ -129,5 +129,3 @@ if (loading) {
 }
 
 export default ClassesPage;
-
-export default ClassesPage;
